@@ -15,13 +15,13 @@ use Psr\Log\LoggerInterface;
 
 class GuestSavePaymentPlugin
 {
-    private OrderLeadFactory $orderLeadFactory;
+    private $orderLeadFactory;
 
-    private OrderLead $orderLeadResource;
+    private $orderLeadResource;
 
-    private LoggerInterface $logger;
+    private $logger;
 
-    private MaskedQuoteIdToQuoteIdInterface $maskedQuoteIdToQuoteId;
+    private $maskedQuoteIdToQuoteId;
 
     /**
      * GuestSavePaymentPlugin constructor

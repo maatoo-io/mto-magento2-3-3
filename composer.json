@@ -14,7 +14,7 @@
     "require": {
         "php": ">=7.4.0",
         "magento/framework": "~102||~103",
-        "symfony/lock": "*"
+        "symfony/lock": "^4.0"
     },
     "autoload": {
         "files": [

@@ -7,7 +7,10 @@ use Magento\Customer\Api\Data\AddressInterface;
 
 class SaveBirthdayIntoCustomerAddress
 {
-    private \Magento\Checkout\Model\Session\Proxy $checkoutSession;
+    /**
+     * @var \Magento\Checkout\Model\Session\Proxy
+     */
+    private $checkoutSession;
 
     public function __construct(\Magento\Checkout\Model\Session\Proxy $checkoutSession )
     {

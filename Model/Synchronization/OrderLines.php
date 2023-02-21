@@ -102,8 +102,7 @@ class OrderLines
         \Magento\Eav\Model\ResourceModel\Entity\Attribute $eavAttribute,
         \Magento\Framework\App\ResourceConnection $resource,
         \Maatoo\Maatoo\Helper\DataSync $helper
-    )
-    {
+    ) {
         $this->storeManager = $storeManager;
         $this->collectionOrderFactory = $collectionOrderFactory;
         $this->collectionQuoteItemFactory = $collectionQuoteItemFactory;
@@ -142,6 +141,7 @@ class OrderLines
                 new \Zend_Db_Expr('TIME_TO_SEC(TIMEDIFF(CURRENT_TIMESTAMP, `updated_at`)) <= ' . $lifetime * 24 * 60 * 60)
             );
 
+            $select->distinct();
             if ($attributeId) {
                 $select->join([
                     'additional_table' => $collection->getTable('catalog_product_entity_int')

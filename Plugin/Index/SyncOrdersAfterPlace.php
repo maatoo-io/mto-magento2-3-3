@@ -24,57 +24,57 @@ class SyncOrdersAfterPlace
     /**
      * @var CartRepositoryInterface
      */
-    private CartRepositoryInterface $cartRepository;
+    private $cartRepository;
 
     /**
      * @var StoreManagerInterface
      */
-    private StoreManagerInterface $storeManager;
+    private $storeManager;
 
     /**
      * @var StoreConfigManager $storeConfigManager
      */
-    private StoreConfigManager $storeConfigManager;
+    private $storeConfigManager;
 
     /**
      * @var SyncRepository
      */
-    private SyncRepository $syncRepository;
+    private $syncRepository;
 
     /**
      * @var Conversion
      */
-    private Conversion $conversionResource;
+    private $conversionResource;
 
     /**
      * @var ConversionFactory
      */
-    private ConversionFactory $conversionFactory;
+    private $conversionFactory;
 
     /**
      * @var Serialize
      */
-    private Serialize $serialize;
+    private $serialize;
 
     /**
      * @var Config
      */
-    private Config $config;
+    private $config;
 
     /**
      * @var AdapterInterface
      */
-    private AdapterInterface $adapter;
+    private $adapter;
 
     /**
      * @var LoggerInterface
      */
-    private LoggerInterface $logger;
+    private $logger;
 
     /**
      * @var Order
      */
-    private Order $order;
+    private $order;
 
     /**
      * Construct
@@ -159,8 +159,10 @@ class SyncOrdersAfterPlace
         if (!empty($conversion->getValue())) {
             $conversionArray = $this->serialize->unserialize($conversion->getValue());
             if (isset($conversionArray['channel']) && isset($conversionArray['lead'])) {
-                $parameters['conversion']['type'] = array_key_first($conversionArray['channel']);
-                $parameters['conversion']['id'] = $conversionArray['channel'][array_key_first($conversionArray['channel'])];
+                $conversionArrayKeys = array_keys($conversionArray['channel']);
+                $firstKey = reset($conversionArrayKeys);
+                $parameters['conversion']['type'] = $firstKey;
+                $parameters['conversion']['id'] = $conversionArray['channel'][$firstKey];
             }
         }
 
