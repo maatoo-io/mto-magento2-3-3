@@ -26,24 +26,24 @@ class NewsletterSubscriptionManagerPlugin
     private $config;
 
     /**
-     * @var StoreConfigManager $storeConfigManager
+     * @var StoreConfigManager
      */
-    private StoreConfigManager $storeConfigManager;
+    private $storeConfigManager;
 
     /**
-     * @var StoreManagerInterface $storeManager
+     * @var StoreManagerInterface
      */
-    private StoreManagerInterface $storeManager;
+    private $storeManager;
 
     /**
-     * @var AdapterInterface $adapter
+     * @var AdapterInterface
      */
-    private AdapterInterface $adapter;
+    private $adapter;
 
     /**
      * @var CookieManagerInterface
      */
-    private CookieManagerInterface $cookieManager;
+    private $cookieManager;
 
     private $logger;
 

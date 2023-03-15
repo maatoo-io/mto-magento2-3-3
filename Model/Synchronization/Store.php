@@ -93,8 +93,13 @@ class Store
                 }
             }
 
-            $maatooStoreModel = $this->maatooStoreRepository->getByStoresId($result['store']['id'], $store->getId());
-            $maatooStoreModel->setMaatooStoreId($result['store']['id']);
+            if (!$result) {
+                $this->logger->warning(__('Response is empty. Please check logs.'));
+                continue;
+            }
+
+            $maatooStoreModel = $this->maatooStoreRepository->getByStoresId($result['store']['id' ] ?? null, $store->getId());
+            $maatooStoreModel->setMaatooStoreId($result['store']['id'] ?? null);
             $maatooStoreModel->setStoreId($store->getId());
             $this->maatooStoreRepository->save($maatooStoreModel);
         }

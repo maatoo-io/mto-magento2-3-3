@@ -12,7 +12,7 @@ class SaveBirthdayIntoOrderAddress
     /**
      * @var QuoteRepository
      */
-    private QuoteRepository $quoteRepository;
+    private $quoteRepository;
 
     /**
      * Constructor

@@ -9,7 +9,7 @@ class LayoutProcessor
     /**
      * @var Config
      */
-    private Config $config;
+    private $config;
 
     /**
      * Constructor

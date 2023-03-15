@@ -161,8 +161,10 @@ class Order
                 if (!empty($conversion->getValue())) {
                     $conversionArray = $this->serialize->unserialize($conversion->getValue());
                     if (isset($conversionArray['channel']) && isset($conversionArray['lead'])) {
-                        $parameters['conversion']['type'] = array_key_first($conversionArray['channel']);
-                        $parameters['conversion']['id'] = $conversionArray['channel'][array_key_first($conversionArray['channel'])];
+                        $conversionArrayKeys = array_keys($conversionArray['channel']);
+                        $firstKey = reset($conversionArrayKeys);
+                        $parameters['conversion']['type'] = $firstKey;
+                        $parameters['conversion']['id'] = $conversionArray['channel'][$firstKey];
 
                         if (isset($parameters['lead_id'])) {
                             //$parameters['lead_id'] = $conversionArray['lead'];

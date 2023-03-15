@@ -163,14 +163,17 @@ class OrderLinesAll
             if (!empty($updateOrdersData) && !empty($maatoSyncInsertData)) {
                 $result = $this->adapter->makeRequest('orderLines/batch/new', $orderLines, 'POST');
                 $maatoSyncInsertData = $this->helper->setMaatooIdToInsertArray($maatoSyncInsertData, $result['orderLines']);
+                $arrayOrdersDataKeys = array_keys($updateOrdersData);
+                $firstKey = reset($arrayOrdersDataKeys);
+                $lastKey = end($arrayOrdersDataKeys);
                 $this->logger->info(
-                    'Added items to orders from # '.array_key_first($updateOrdersData).
-                    ' to #'.array_key_last($updateOrdersData) . ' to maatoo'
+                    'Added items to orders from #' . $firstKey .
+                    ' to #' . $lastKey . ' to maatoo'
                 );
                 if (is_callable($cl)) {
                     $cl(
-                        'Added items to orders from # '.array_key_first($updateOrdersData).
-                        ' to #'.array_key_last($updateOrdersData) . ' to maatoo'
+                        'Added items to orders from #'. $firstKey.
+                        ' to #' . $lastKey . ' to maatoo'
                     );
                 }
             }

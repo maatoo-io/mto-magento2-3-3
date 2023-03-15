@@ -17,22 +17,22 @@ class BirthdayAttribute implements DataPatchInterface, PatchRevertableInterface
     /**
      * @var ModuleDataSetupInterface
      */
-    private ModuleDataSetupInterface $moduleDataSetup;
+    private $moduleDataSetup;
 
     /**
      * @var AttributeResource
      */
-    private AttributeResource $attributeResource;
+    private $attributeResource;
 
     /**
      * @var CustomerSetupFactory
      */
-    private CustomerSetupFactory $customerSetupFactory;
+    private $customerSetupFactory;
 
     /**
      * @var ManagerInterface
      */
-    private ManagerInterface $messageManager;
+    private $messageManager;
 
     private const ATTRIBUTE_NAME = 'birthday';
 
@@ -93,7 +93,7 @@ class BirthdayAttribute implements DataPatchInterface, PatchRevertableInterface
             $customerSetup->addAttributeToSet(
                 AddressMetadataInterface::ENTITY_TYPE_ADDRESS,
                 AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
-                null,
+                '',
                 self::ATTRIBUTE_NAME
             );
 
